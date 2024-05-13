@@ -42,6 +42,7 @@ public class test {
 	}
 
 	// Post Condition:
+	@AfterMethod
 	public void close() {
 		// Close the browser
 		driver.quit();
