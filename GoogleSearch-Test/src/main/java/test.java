@@ -4,13 +4,24 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class test {
+	private WebDriver driver;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		WebDriver driver;
+	// Preconditions:
+	@BeforeMethod
+	public void setUp() {
 		driver = new ChromeDriver(); // Open Chrome Browser
+	}
+
+	// Test
+	@Test
+	public void searchTest() {
+		// TODO Auto-generated method stub
+
 		driver.get("https://www.google.com/"); // Navigate to Google
 
 		WebElement element = driver.findElement(By.name("q")); // find searchbox element
@@ -23,12 +34,15 @@ public class test {
 		// Validate the title of the search results page.
 		String title = driver.getTitle();
 		System.out.println(title);
-		if (title.contains("Selenium Tutorials")) {
-			System.out.println("Title of the search results page contains Selenium Tutorials");
-		} else {
-			System.out.println("Title of the search results page does not contain Selenium Tutorials");
-		}
+		Assert.assertTrue(title.contains("Selenium Tutorials"), "Failed testing");
 
+		// Close the browser
+		driver.quit();
+
+	}
+
+	// Post Condition:
+	public void close() {
 		// Close the browser
 		driver.quit();
 
