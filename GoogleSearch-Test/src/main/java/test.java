@@ -36,8 +36,7 @@ public class test {
 		System.out.println(title);
 		Assert.assertTrue(title.contains("Selenium Tutorials"), "Failed testing");
 
-		// Close the browser
-		driver.quit();
+
 
 	}
 
